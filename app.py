@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import glob
 
 st.set_page_config(page_title="Mi Dashboard - Sell Out", layout="wide")
 st.title("Mi Dashboard - Bienvenido, Cristian Camilo Castillo")
@@ -7,7 +8,8 @@ st.subheader("Sell Out 2025 vs 2026 - SURTIDORA QUINDIO")
 
 @st.cache_data
 def cargar():
-    df = pd.read_excel("Base_limpia_Sell_Out.xlsx", sheet_name="Export")
+    archivos = glob.glob("*.xlsx")
+    df = pd.read_excel(archivos[0], sheet_name="Export")
     df.columns = [c.strip() for c in df.columns]
     df["FECHA"] = pd.to_datetime(df["FECHA"])
     return df
