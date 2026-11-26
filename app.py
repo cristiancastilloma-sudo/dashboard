@@ -6,7 +6,9 @@ st.set_page_config(page_title="Sell Out Dashboard", layout="wide")
 st.title("📊 Sell Out - Dashboard")
 
 df = pd.read_excel("Base limpia Sell Out.xlsx")
-df.columns = [str(c).strip().upper().replace("  ", " ") for c in df.columns]
+nombres = list(df.columns)
+nombres[6] = "PUNTO DE VENTA"
+df.columns = nombres
 # Filtros
 st.sidebar.header("Filtros")
 distribuidoras = ["Todas"] + sorted(df["DISTRIBUIDORA"].dropna().unique().tolist())
