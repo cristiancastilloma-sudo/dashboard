@@ -39,7 +39,7 @@ c2.metric("Crecimiento vs 2025", f"{crecimiento:.1f}%")
 c3.metric("Puntos de Venta", f"{num_pdvs}")
 
 # Gráfico por mes
-mensual = dff.groupby([dff.columns[2], dff.columns[3]])[dff.columns[7]].sum().reset_index()
+mensual = dff.groupby([dff.columns[2], dff.columns[3]])[dff.columns[5]].sum().reset_index()
 mensual.columns = ["MES", "AÑO", "VALOR"]
 fig = px.bar(mensual, x="MES", y="VALOR", color="AÑO", barmode="group", title="Ventas por Mes - 2025 vs 2026")
 st.plotly_chart(fig, use_container_width=True)
