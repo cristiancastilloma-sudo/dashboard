@@ -9,7 +9,7 @@ df = pd.read_excel("Base limpia Sell Out.xlsx")
 nombres = list(df.columns)
 nombres[6] = "PUNTO DE VENTA"
 df.columns = nombres
-df = df.loc[:, ~df.columns.duplicated()]
+df = df[[c for c in df.columns if ".1" not in c]]
 # Filtros
 st.sidebar.header("Filtros")
 distribuidoras = ["Todas"] + sorted(df["DISTRIBUIDORA"].dropna().unique().tolist())
